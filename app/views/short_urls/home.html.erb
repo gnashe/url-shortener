@@ -1,0 +1,5 @@
+<%= form_for(@short_url) do |f| %>
+  <%= f.label :original_url %>
+  <%= f.text_field :original_url %>
+  <%= f.submit "Shorten my url" %>
+<% end %>

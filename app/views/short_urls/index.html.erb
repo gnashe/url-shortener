@@ -1,0 +1,9 @@
+<h1>All Saved Urls</h1>
+<ul class="urls">
+  <% @short_urls.each do |short_url| %>
+  <li>
+    <%= short_url.original_url %>, <%= short_url.short_url %>
+  </li>
+  <% end %>
+</ul>
+

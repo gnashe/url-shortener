@@ -1,14 +1,14 @@
 class ShortUrlsController < ApplicationController
   def home
-    render html: "Hello, world!"
+    @short_url = ShortUrl.new
   end
 
-  def shortened
-    render html: "Hello, #{params[:short_url]}"
+  def index
+    @short_urls = ShortUrl.all
   end
 
-  def show_all
-    render html: "Hello, show all!"
+  def show
+    @short_url = ShortUrl.find(params[:id])
   end
 
   def redirect
