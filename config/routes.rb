@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "short_urls#home"
+  get "/short/:short_url", to: "short_urls#shortened"
+  get "/all",                  to: "short_urls#show_all"
+  get "/:short_url",           to: "short_urls#redirect"
 end
