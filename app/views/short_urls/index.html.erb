@@ -2,7 +2,7 @@
 <ul class="urls">
   <% @short_urls.each do |short_url| %>
   <li>
-    <%= short_url.original_url %>, <%= short_url.short_url %>
+    <%= short_url.original_url %>, <%= short_url.short_path %>
   </li>
   <% end %>
 </ul>

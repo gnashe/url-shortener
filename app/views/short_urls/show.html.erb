@@ -1,1 +1,7 @@
-<%= @short_url.original_url %>, <%= @short_url.short_url %>
+<div>
+  Your original url: <%= @short_url.original_url %>
+</div>
+<div>
+  Your shortened url:
+  <%= request.protocol + request.host_with_port %>/<%= @short_url.short_path %>
+</div>

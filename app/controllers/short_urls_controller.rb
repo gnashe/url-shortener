@@ -1,4 +1,7 @@
 class ShortUrlsController < ApplicationController
+  DUPLICATE_ERR_MSG = "has already been taken"
+  INVALID_URI_ERR_MSG = "not a valid uri"
+
   def home
     @short_url = ShortUrl.new
   end
@@ -15,15 +18,22 @@ class ShortUrlsController < ApplicationController
     @short_url = ShortUrl.new(short_url_params)
     if @short_url.save
       redirect_to @short_url
-      # handle successful save
     else
-      # handle fault
-      render html: "uh oh! something went wrong"
+      # handle duplicated original_urls
+      @short_url.errors.messages[:original_url].each { |err_msg|
+        if (err_msg == DUPLICATE_ERR_MSG)
+          redirect_to ShortUrl.find_by_original_url(@short_url[:original_url])
+        elsif (err_msg == INVALID_URI_ERR_MSG )
+          render html: "Not a valid uri"
+        else
+          render html: "Uh oh, something went wrong"
+        end
+      }
     end
   end
 
   def redirect
-    @short_url = ShortUrl.find_by_short_url(params[:short_url])
+    @short_url = ShortUrl.find_by_short_path(params[:short_path])
     redirect_to @short_url.original_url
   end
 
