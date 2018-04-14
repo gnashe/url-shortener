@@ -1,24 +1,31 @@
-# README
+# About the project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a introduction to Rails, and a url-shortener. This project takes inputs of valid, active URLs, and shortens them into smaller URLs. There is a simple user interface to do this, and view all current stored URLs.
 
-Things you may want to cover:
+# Versions
 
-* Ruby version
+* Ruby version = 2.5.1
+* Rails version = 5.1.6
 
-* System dependencies
+# Setup
+Clone the repo with
 
-* Configuration
+`git clone https://github.com/irogi/url-shortener.git && cd url-shortener`
 
-* Database creation
+Install all the dependencies by running `bundle install`, and then migrate the database with `rails db:migrate`.
 
-* Database initialization
+After this is done, start up the rails server with
 
-* How to run the test suite
+`rails server`
 
-* Services (job queues, cache servers, search engines, etc.)
+# Future development
+The project has a testing suite to check for valid URLs, and this can be run with `rails test`.
 
-* Deployment instructions
+The following additions are currently in progress:
 
-* ...
+* Expiration of links
+* Edit shortened urls
+
+# Author
+
+* Igor Ilic

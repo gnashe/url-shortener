@@ -1,9 +1,17 @@
 <h1>All Saved Urls</h1>
-<ul class="urls">
+<table>
+  <tr>
+    <th>Original Url</th>
+    <th>Short Url</th>
+  </tr>
   <% @short_urls.each do |short_url| %>
-  <li>
-    <%= short_url.original_url %>, <%= short_url.short_path %>
-  </li>
+    <tr>
+      <td>
+        <%= short_url.original_url %>
+      </td>
+      <td>
+        <%= request.protocol + request.host_with_port %>/<%= short_url.short_path %>
+      </td>
+    </tr>
   <% end %>
-</ul>
-
+</table>
