@@ -35,7 +35,12 @@ class ShortUrl < ApplicationRecord
     if url !~ REGEX_PROTOCOL
       url = "http://#{url}"
     end
-    self.original_url = URI.parse(url).normalize.to_s
+    begin
+      self.original_url = URI.parse(url).normalize.to_s
+    rescue URI::InvalidURIError
+      # handle urls that cannot be parsed
+      self.original_url = url
+    end
   end
 
   def create_short_path

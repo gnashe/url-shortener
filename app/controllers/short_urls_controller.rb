@@ -24,9 +24,9 @@ class ShortUrlsController < ApplicationController
         if (err_msg == DUPLICATE_ERR_MSG)
           redirect_to ShortUrl.find_by_original_url(@short_url[:original_url])
         elsif (err_msg == INVALID_URI_ERR_MSG )
-          render html: "Not a valid uri"
+          render 'home'
         else
-          render html: "Uh oh, something went wrong"
+          render html: "Uh oh, something went wrong..."
         end
       }
     end
